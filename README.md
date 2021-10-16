@@ -12,7 +12,7 @@
 
 ## 👀 View
 
-여기에 이미지/gif 넣기
+<img width="2048" alt="스크린샷 2021-10-16 오후 5 14 55" src="https://user-images.githubusercontent.com/58936251/137580149-f3ebcbc5-47d3-4f90-a514-7d1a0ae9a8c8.png">
 ## 💡 주요기능
 - 로그인, 회원가입 
     - 공란 여부 확인
