@@ -45,4 +45,19 @@
 [Front-end-Rules Wiki](https://github.com/jjubbu/Calendar-Diary-Front/wiki/Front-end-Rules)
 
 
+## 📖 라이브러리
+- Fullcalendar 
+    - 메인 캘린더를 빠르게 구현
+- axios
+    - 서버와의 연결(데이터 추가, 수정, 가져오기)
+- immer
+    - 불변성 유지
+- lodash
+    - input 이벤트 콜백 감소
+- redux-toolkit
+    - 리덕스 모듈 코드 최소화
+- redux-chunk
+    - 비동기 작업을 위한 미들웨어
+- styled-components
+    - Css in js, 전반적인 스타일 작업
 
