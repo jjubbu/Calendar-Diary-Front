@@ -1,4 +1,4 @@
-# 🗓 [Calendar type Diary](http://calendar-type-diary.shop.s3-website.ap-northeast-2.amazonaws.com/)
+# 🗓 [Calendar type Diary](http://calendar-type-diary.shop/)
 항해 99 3기 4주차 팀 프로젝트 - 프론트 원격 저장소
 
 🔓[백엔드 원격 저장소](https://github.com/jeangho293/Calendar-Diary-Back)
