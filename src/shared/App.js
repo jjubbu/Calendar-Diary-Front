@@ -12,6 +12,7 @@ import Error_ from "../pages/Error500";
 
 import {history} from "../redux/configureStore";
 import showError from "../redux/modules/checkError";
+import { Helmet } from "react-helmet";
 
 function App() {
     //로그인 안하고 확인할때 false 를 true 로 바꿔주세요
@@ -58,6 +59,27 @@ function App() {
 
     return (
         <ConnectedRouter history={history}>
+            <Helmet>
+                <title>Calendar type Diary</title>
+                <meta name="title" content="Calendar type Diary"/>
+                <meta name="description" content="나만의 캘린더형 다이어리"/>
+
+                <meta property="og:type" content="website"/>
+                <meta
+                    property="og:url"
+                    content="http://calendar-type-diary.shop.s3-website.ap-northeast-2.amazonaws.com/"/>
+                <meta property="og:title" content="Calendar type Diary"/>
+                <meta property="og:description" content="나만의 캘린더형 다이어리"/>
+                <meta property="og:image" content=""/>
+
+                <meta property="twitter:card" content="summary_large_image"/>
+                <meta
+                    property="twitter:url"
+                    content="http://calendar-type-diary.shop.s3-website.ap-northeast-2.amazonaws.com/"/>
+                <meta property="twitter:title" content="Calendar type Diary"/>
+                <meta property="twitter:description" content="나만의 캘린더형 다이어리"/>
+                <meta property="twitter:image" content=""/>
+            </Helmet>
             {
                 is_login
                     ? (<Route path="/" exact component={Main}/>)
