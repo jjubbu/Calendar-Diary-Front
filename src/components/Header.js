@@ -1,11 +1,13 @@
 import React from "react";
 import {Cookies} from "react-cookie"
 import styled from "styled-components";
+import { history } from "../redux/configureStore";
 
 const Header = () => {
     const cookies = new Cookies();
     const logoutButton = () => {
         cookies.remove('token');
+        console.log(":::LOGOUT:::")
         window.location.reload();
     }
 

@@ -47,11 +47,12 @@ const setCalendarMW = (_today) => {
             })
             .catch((err) => {
                 console.log("에러발생", err);
-                if(err.response.status === 404){
-                    history.push('/error404');
-                }else{
-                    history.push('/error500');
-                }
+                // history.push('/');
+                // if(err.response.status === 404){
+                //     history.push('/error404');
+                // }else{
+                //     history.push('/error500');
+                // }
             });
     };
 };

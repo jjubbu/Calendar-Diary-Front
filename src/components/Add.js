@@ -299,6 +299,7 @@ cursor: pointer;
   &:hover{
     opacity: 1;
   }
+  &:last-child{margin:0;}
   @media only screen and (max-width: 680px) {
     width: 20px;
     height: 20px;
