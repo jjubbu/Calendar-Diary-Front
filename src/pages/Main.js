@@ -2,6 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import {apis} from "../lib/axios";
+import { Helmet } from "react-helmet";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -164,6 +165,12 @@ const Main = (props) => {
 
     return (
         <React.Fragment>
+            <Helmet>
+                <title>Calendar type Diary</title>
+                <meta property="og:title" content="Calendar type Diary" />
+                <meta property="og:description" content="캘린더타입다이어리만들기" />
+                <meta property="og:image" content="../Frame 1.png" />
+            </Helmet>
             {
                 Detail_control
                     ? <Detail date={target_date}/>

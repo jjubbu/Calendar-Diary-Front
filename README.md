@@ -1,6 +1,8 @@
 # 🗓 [Calendar type Diary](http://calendar-type-diary.shop.s3-website.ap-northeast-2.amazonaws.com/)
 항해 99 3기 4주차 팀 프로젝트 - 프론트 원격 저장소
 
+🔓[백엔드 원격 저장소](https://github.com/jeangho293/Calendar-Diary-Back)
+
 ## 👥 팀원 
 - Front 김갑민 ([Github](https://github.com/gabmin)), 박시영 ([Github](https://github.com/larisms)), 심선아 ([Github](https://github.com/jjubbu))
 - Back 김정호([Github](https://github.com/jeangho293)), 조원호([Github](https://github.com/Joe-wonho))
