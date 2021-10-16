@@ -11,8 +11,11 @@
 - 2021/10/11 ~ 2021/10/16
 
 ## 👀 View
-
+[영상으로 보기](https://youtu.be/ddu1T307obo)
 <img width="2048" alt="스크린샷 2021-10-16 오후 5 14 55" src="https://user-images.githubusercontent.com/58936251/137580149-f3ebcbc5-47d3-4f90-a514-7d1a0ae9a8c8.png">
+<img width="2048" alt="스크린샷 2021-10-16 오후 5 17 10" src="https://user-images.githubusercontent.com/58936251/137580199-4b9f9e22-6984-407a-a2d7-29fd57f7d73e.png">
+<img width="2048" alt="스크린샷 2021-10-16 오후 5 17 24" src="https://user-images.githubusercontent.com/58936251/137580201-2dbdcd8f-33f3-41ae-b739-97914f018c7d.png">
+<img width="2048" alt="스크린샷 2021-10-16 오후 5 17 35" src="https://user-images.githubusercontent.com/58936251/137580205-260f67c5-a402-4d84-9a49-00433c73b10b.png">
 
 ## 💡 주요기능
 - 로그인, 회원가입 
