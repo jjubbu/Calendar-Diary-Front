@@ -1,23 +1,14 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 
-import { actionCreators as detailActions } from "../redux/modules/detail";
-import { actionCreators as addActions } from "../redux/modules/calendar";
-import { actionCreators as editActions } from "../redux/modules/calendar";
-import { addShow, detailShow } from "../redux/modules/show";
-import { Input, Grid, Text, Button } from "../elements";
+import {actionCreators as detailActions} from "../redux/modules/detail";
+import {actionCreators as addActions} from "../redux/modules/calendar";
+import {addShow, detailShow} from "../redux/modules/show";
 
 const Add = (props) => {
 
-    const history = useHistory();
     const dispatch = useDispatch();
-
-    const thisMonthEventList = useSelector((state) => state.calendar.list);
-    const testButton = () => {
-        console.log("this month list:::", thisMonthEventList);
-    }
 
     const editPost = useSelector((state) => {
         console.log(state.detail)
@@ -26,7 +17,6 @@ const Add = (props) => {
     const is_edit = editPost._id
         ? true
         : false;
-    // console.log("편집데이터가져오기", editPost); console.log("이즈에딧확인하기", is_edit);
 
     const [title, setTitle] = React.useState(
         is_edit
@@ -43,9 +33,6 @@ const Add = (props) => {
             ? editPost.color
             : "#DD6262"
     );
-    // const [editTitle, setEditTitle] = React.useState(is_edit? editPost.title :
-    // ""); const [editContent, setEditContent] = React.useState(is_edit?
-    // editPost.content : "");
 
     const date = props.date;
 
@@ -53,7 +40,7 @@ const Add = (props) => {
         date: date,
         title: title,
         content: content,
-        color: color,
+        color: color
     }
 
     const changeTitle = (e) => {
@@ -71,7 +58,10 @@ const Add = (props) => {
                 x.setAttribute('class', class_)
             }
         });
-        e.target.classList.add("on");
+        e
+            .target
+            .classList
+            .add("on");
 
     }
 
@@ -79,7 +69,7 @@ const Add = (props) => {
         if (!post.title) {
             window.alert("제목을 입력해주세요.")
             return;
-            } 
+        }
         console.log("빈값확인용포스트", post)
         dispatch(detailActions.addContentMW(post));
         dispatch(addActions.addCalendarMW(post));
@@ -89,8 +79,10 @@ const Add = (props) => {
     }
 
     const _udtContent = () => {
-        const id = editPost._id
-        console.log("업데이트넘겨주는포스트", post)
+        const id = editPost
+            ._id
+            console
+            .log("업데이트넘겨주는포스트", post)
         console.log("업데이트넘겨주는아이디", id)
         dispatch(detailActions.udtContentMW(id, post))
         // dispatch(editActions.editCalendarMW(id,post)) editCalendarMW
@@ -115,7 +107,6 @@ const Add = (props) => {
         dispatch(addShow(false));
     };
 
-
     return (
         <React.Fragment>
             <ModalBG>
@@ -139,23 +130,21 @@ const Add = (props) => {
                             value={title}
                             onChange={changeTitle}
                             type="text"
-                            placeholder="제목을 입력해주세요"
-                        ></TitleInput>
+                            placeholder="제목을 입력해주세요"></TitleInput>
                         <SubText>Content</SubText>
                         <ContentInput
                             value={content}
                             onChange={changeContent}
                             type="text"
-                            placeholder="내용을 입력해주세요"
-                        ></ContentInput>
+                            placeholder="내용을 입력해주세요"></ContentInput>
                     </InputDiv>
 
                     <div>
-                        {is_edit ? (
-                            <AddBtn onClick={_udtContent}>수정하기</AddBtn>
-                        ) : (
-                            <AddBtn onClick={_addContent}>저장하기</AddBtn>
-                        )}
+                        {
+                            is_edit
+                                ? (<AddBtn onClick={_udtContent}>수정하기</AddBtn>)
+                                : (<AddBtn onClick={_addContent}>저장하기</AddBtn>)
+                        }
                     </div>
                 </Wrap>
             </ModalBG>
@@ -163,7 +152,7 @@ const Add = (props) => {
     )
 }
 
-const ModalBG = styled.div` 
+const ModalBG = styled.div ` 
 position: fixed; 
 top: 50%; 
 left: 50%; 
@@ -182,7 +171,7 @@ border-radius: 10px;
 box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
 `;
 
-const AddHead = styled.div`
+const AddHead = styled.div `
 width: 100%;
 display: flex;
 flex-direction: row;
@@ -191,7 +180,7 @@ align-items: center;
 margin: 5px 0px;
 `;
 
-const GoBackBtn = styled.button`
+const GoBackBtn = styled.button `
 width: 40px;
 height: 40px;
 margin: 0px 0px 0px 3px;
@@ -211,7 +200,7 @@ outline: none;
   }
 `;
 
-const CloseBtn = styled.button`
+const CloseBtn = styled.button `
 width: 40px;
 height: 40px;
 margin: 0px 0px 0px 3px;
@@ -232,7 +221,7 @@ outline: none;
   }
 `;
 
-const Wrap = styled.div`
+const Wrap = styled.div `
 height: 100%;
 width: 100%;
 padding: 14px;
@@ -257,7 +246,7 @@ overflow-y: auto;
 } 
 `;
 
-const DiaryDate = styled.p`
+const DiaryDate = styled.p `
 margin: 0 auto;
 font-family: 'Song Myung', serif;
 color: #655f5b;
@@ -266,9 +255,7 @@ font-size: 20px;
 white-space: pre-wrap;
 `;
 
-
-
-const InputDiv = styled.div`
+const InputDiv = styled.div `
 width: 80%;
 height: 70%;
 margin: 0 auto ;
@@ -277,7 +264,7 @@ flex-direction: column;
 overflow: hidden;
 `;
 
-const ColorBtnDiv = styled.div`
+const ColorBtnDiv = styled.div `
 margin: 50px auto;
 display: flex;
 flex-direction: row;
@@ -285,7 +272,7 @@ justify-content: center;
 
 `;
 
-const ColorBtn = styled.button`
+const ColorBtn = styled.button `
 width:25px;
 height:25px;
 border-radius: 100px;
@@ -304,18 +291,19 @@ cursor: pointer;
     width: 20px;
     height: 20px;
   }
-background-color: ${(props) => props.color};
+background-color: ${ (
+    props
+) => props.color};
 `;
 
-
-const SubText = styled.p`
+const SubText = styled.p `
 font-family: 'Nanum Myeongjo', serif;
 letter-spacing: 1px;
 font-weight: 600;
 font-size: 15px;
 `;
 
-const TitleInput = styled.input`
+const TitleInput = styled.input `
 font-family: 'Nanum Myeongjo', serif;
 border: 1px solid #e0c9b6;
 margin: 10px auto 10% auto;
@@ -332,7 +320,7 @@ word-break: break-word;
 }
 `;
 
-const ContentInput = styled.textarea`
+const ContentInput = styled.textarea `
 font-family: 'Nanum Myeongjo', serif;
 border: 1px solid #e0c9b6;
 margin: 10px auto;
@@ -352,8 +340,7 @@ word-break: break-word;
 }
 `;
 
-
-const AddBtn = styled.button`
+const AddBtn = styled.button `
 display: block;
 margin: 10px auto;
 width: 100px;
@@ -377,7 +364,5 @@ outline: none;
     color: #fff;
   }
 `;
-
-
 
 export default Add;

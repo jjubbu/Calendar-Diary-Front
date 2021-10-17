@@ -29,7 +29,7 @@ const Login = () => {
             dispatch(loginAction.loginMW(ID, PW))
         } else if (ID === "" || PW === "") {
             setWarn('아이디, 혹은 비밀번호를 확인해주세요!');
-        } 
+        }
     }
 
     const onChangeWarnID = (e) => {
@@ -61,7 +61,7 @@ const Login = () => {
                         <Text fontSize="3rem" color="#967A6D">PW</Text>
                     </Grid>
                     <Grid>
-                        <Input type="password" onChange={onChangeWarnPW}  onSubmit={login}/>
+                        <Input type="password" onChange={onChangeWarnPW} onSubmit={login}/>
                         <span>{warn}</span>
                     </Grid>
                 </StyledLabel>
@@ -78,13 +78,9 @@ const Login = () => {
     )
 }
 
-
-
-const StyledTitle = styled.div`
+const StyledTitle = styled.div `
 width: 100%;
 text-align: center;
 `
-
-
 
 export default Login;

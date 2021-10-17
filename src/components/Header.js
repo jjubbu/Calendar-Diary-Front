@@ -1,27 +1,28 @@
 import React from "react";
 import {Cookies} from "react-cookie"
 import styled from "styled-components";
-import { history } from "../redux/configureStore";
 
 const Header = () => {
     const cookies = new Cookies();
     const logoutButton = () => {
         cookies.remove('token');
         console.log(":::LOGOUT:::")
-        window.location.reload();
+        window
+            .location
+            .reload();
     }
 
-    return(
+    return (
         <React.Fragment>
             <StyledHeader >
                 <h1>Calendar type Diary</h1>
-            <button onClick={logoutButton}>로그아웃</button>
+                <button onClick={logoutButton}>로그아웃</button>
             </StyledHeader>
         </React.Fragment>
     )
 }
 
-const StyledHeader = styled.section`
+const StyledHeader = styled.section `
 display: flex;
 justify-content: space-between;
 align-items: center;

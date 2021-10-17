@@ -3,7 +3,6 @@ import {produce} from "immer";
 import {apis} from "../../lib/axios";
 
 import {actionCreators as editAction} from "./calendar"
-import showError from "./checkError";
 
 const SET_CONTENT = "SET_CONTENT";
 const ADD_CONTENT = "ADD_CONTENT";
@@ -48,9 +47,9 @@ const setContentMW = (date) => {
             })
             .catch((err) => {
                 console.log("로드에러", err)
-                if(err.response.status === 404){
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             })
@@ -67,9 +66,9 @@ const addContentMW = (post) => {
                 // console.log("[detail.js] addContentAX :::", res);
             })
             .catch((err) => {
-                if(err.response.status === 404){
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });
@@ -82,7 +81,7 @@ const udtContentMW = (id, post) => {
         apis
             .udtContentAX(id, post)
             .then((res) => {
-                
+
                 console.log(post)
                 dispatch(udtContent(id, post));
                 dispatch(editAction.editCalendar(post))
@@ -103,15 +102,15 @@ const delContentMW = (id) => {
                 }
             })
             .then((res) => {
-            
+
                 console.log("알이에스", res);
                 dispatch(delContent(id));
             })
             .catch((err) => {
                 console.log("삭제에러", err);
-                if(err.response.status === 404){
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });

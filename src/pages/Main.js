@@ -2,7 +2,6 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 import {apis} from "../lib/axios";
-import { Helmet } from "react-helmet";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -15,7 +14,6 @@ import Header from "../components/Header";
 
 import {detailShow} from "../redux/modules/show";
 import {actionCreators as calendarAction} from "../redux/modules/calendar";
-import showError from "../redux/modules/checkError";
 import {history} from "../redux/configureStore";
 
 const Main = (props) => {
@@ -43,11 +41,6 @@ const Main = (props) => {
         dispatch(detailShow(true));
     };
 
-    const thisMonthEventList = useSelector((state) => state.calendar.list);
-    const testButton = () => {
-        console.log("[Main] this month list:::", thisMonthEventList);
-    };
-
     //서버로 부터 데이터 받아오기
     React.useEffect(() => {
         const _today = formatDate(
@@ -61,9 +54,6 @@ const Main = (props) => {
                 minute: "2-digit"
             }
         );
-        // apis   .getPostAX({ params: { date: _today } })   .then((res) => {     const
-        // post = res.data;     setList(...list, post);   })   .catch((err) => {
-        // console.error(err);   });
         dispatch(calendarAction.setCalendarMW(_today));
         console.log(":::getCalendar is updated:::");
     }, [edit_list, delCount]);
@@ -75,9 +65,6 @@ const Main = (props) => {
         console.log(":::setList = new_list is updated:::");
     }, [is_get]);
 
-    // Modal창 열기 함수 const modalOpen = (info) => {   setTarget_date(info.dateStr);
-    // console.log(target_date);   setVisible(true);
-    // apis.getPost("http://localhost:4000/?date=target_date"); }; 캘린더 제목 설정
     const titleFormat = {
         year: "numeric",
         month: "long"
@@ -106,13 +93,14 @@ const Main = (props) => {
                 }
             })
             .then((res) => {
-                
+
                 const post_list = res.data;
                 setList(post_list);
-            }).catch((err) => {
-                if(err.response.status === 404){
+            })
+            .catch((err) => {
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });
@@ -142,10 +130,11 @@ const Main = (props) => {
                 const post_list = res.data;
                 console.log(post_list);
                 setList(post_list);
-            }).catch((err) => {
-                if(err.response.status === 404){
+            })
+            .catch((err) => {
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });
@@ -153,24 +142,21 @@ const Main = (props) => {
 
     const addClass = (e) => {
         const siblings = t => [...t.parentElement.children].filter(e => e != t);
-        siblings(e.target).map((x)=>{
-            const class_ = String(x.classList[0]+" "+x.classList[1])
-            if(x.classList[2] === "on"){
-                x.setAttribute('class',class_)
+        siblings(e.target).map((x) => {
+            const class_ = String(x.classList[0] + " " + x.classList[1])
+            if (x.classList[2] === "on") {
+                x.setAttribute('class', class_)
             }
         });
-        e.target.classList.add("on");
-        
+        e
+            .target
+            .classList
+            .add("on");
     }
 
     return (
         <React.Fragment>
-            <Helmet>
-                <title>Calendar type Diary</title>
-                <meta property="og:title" content="Calendar type Diary" />
-                <meta property="og:description" content="캘린더타입다이어리만들기" />
-                <meta property="og:image" content="../Frame 1.png" />
-            </Helmet>
+
             {
                 Detail_control
                     ? <Detail date={target_date}/>

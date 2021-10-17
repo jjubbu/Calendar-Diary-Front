@@ -9,8 +9,6 @@ padding: 50px 40px;
 background-color: #EAE6E2;
 border-top: 2px solid rgba(129, 141, 144, 0.2);
 border-left: 2px solid rgba(129, 141, 144, 0.2);
-/* border-right: 2px solid rgba(129, 141, 144, 0.2); */
-/* border-bottom: 2px solid rgba(129, 141, 144, 0.2); */
 box-sizing: border-box;
 box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.25);
 border-radius: 20px 0px;
@@ -21,7 +19,6 @@ border-radius: 20px 0px;
     padding: 50px 8%;
     box-shadow:none;
 }
-
 `
 
 const StyledLabel = styled.label `
@@ -51,4 +48,7 @@ span{
 
 `
 
-export {StyledLabel,StyledSection} 
+export {
+    StyledLabel,
+    StyledSection
+}

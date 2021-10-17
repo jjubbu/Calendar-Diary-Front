@@ -23,8 +23,7 @@ const Signup = () => {
 
     const warnID = useSelector(state => state.user.warnID);
 
-    // input 값 const ID = React.useRef(); const PW = React.useRef(); const checkPW =
-    // React.useRef();
+    // input 값
     const [ID, setID] = React.useState();
     const [PW, setPW] = React.useState();
     const [confirmPW, setConfirmPW] = React.useState();
@@ -79,7 +78,7 @@ const Signup = () => {
 
     //중복확인 클릭시
     const overlap = () => {
-        if(ID === ""){}
+        if (ID === "") {}
         console.log("overlap ID :::", ID);
         dispatch(signupAction.checkOverlapMW(ID))
     }
@@ -124,7 +123,12 @@ const Signup = () => {
                     <Grid>
                         <StyledSpan>{warnID}</StyledSpan>
                         <Grid>
-                            <Input type="text" onChange={onChangeID} onSubmit={!disabled?overlap:emptyEvent}/>
+                            <Input
+                                type="text"
+                                onChange={onChangeID}
+                                onSubmit={!disabled
+                                    ? overlap
+                                    : emptyEvent}/>
                             <StyledOverlap onClick={overlap} disabled={disabled}>중복확인</StyledOverlap>
                         </Grid>
 
@@ -198,9 +202,6 @@ top:0;
 @media only screen and (max-width: 950px) {
     &.confirm {
         top:88px;
-        
-
-
     }
 }
 

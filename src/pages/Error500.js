@@ -1,11 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-const Error = () =>{
-
-    // const status = useSelector(state => state.error.errorCode);
-    // const statusMsg = useSelector(state => state.error.errorMsg);
-    // const test = useSelector(state => state.calendar.delCount);
+const Error500 = () =>{
 
     return(
         <React.Fragment>
@@ -14,4 +9,4 @@ const Error = () =>{
     )
 }
 
-export default Error;
+export default Error500;

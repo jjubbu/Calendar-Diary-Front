@@ -5,9 +5,8 @@ import {createAction, handleActions} from "redux-actions";
 import {apis} from "../../lib/axios";
 import {signupShow, loginShow} from "./show";
 import {Cookies} from "react-cookie";
-import showError from "./checkError";
 
-//로그인,회원가입 페이지 렌더링 응답? 회원가입 정보 초기값
+//로그인,회원가입 페이지 사용자 정보 초기값
 const initialState = {
     createAccount: [
         {
@@ -45,13 +44,13 @@ const createAccountMW = (userID, PW, confirmPW) => {
                     dispatch(creatAccount_(user))
                     dispatch(signupShow(false));
                     dispatch(loginShow(true));
-                } 
+                }
             })
             .catch((error) => {
                 console.log(error)
-                if(error.response.status === 404){
+                if (error.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });
@@ -64,15 +63,15 @@ const checkOverlapMW = (userID) => {
         apis
             .checkOverlapAX(userID)
             .then((res) => {
-               
+
                 dispatch(changeWarnID(res.data.msg))
                 console.log("중복확인 성공")
             })
             .catch((error) => {
                 console.log(error)
-                if(error.response.status === 404){
+                if (error.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             });
@@ -95,18 +94,19 @@ const loginMW = (userID, PW) => {
                     window
                         .location
                         .reload();
-                }else {
+                } else {
                     alert(res.data.msg);
                 }
                 console.log("response:::", res);
-            }).catch((err) => {
-                if(err.response.status === 404){
+            })
+            .catch((err) => {
+                if (err.response.status === 404) {
                     history.push('/error404');
-                }else{
+                } else {
                     history.push('/error500');
                 }
             })
-    }
+        }
 }
 
 export default handleActions({

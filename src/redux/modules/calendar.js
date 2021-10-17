@@ -1,7 +1,6 @@
 import {createAction, handleActions} from "redux-actions";
 import {produce} from "immer";
 import {apis} from "../../lib/axios";
-import showError from "./checkError";
 
 //Action
 const SET_CALENDAR = "SET_CALENDAR";
@@ -27,7 +26,7 @@ const initialState = {
 };
 
 const setCalendarMW = (_today) => {
-    return function (dispatch,{history}) {
+    return function (dispatch, {history}) {
         apis
             .getPostAX({
                 params: {
@@ -42,17 +41,10 @@ const setCalendarMW = (_today) => {
                 });
                 console.log("this month list New:::", new_list);
                 dispatch(setCalendar(new_list));
-                // console.log("this month list :::",post_list);
                 dispatch(isGetCalendar())
             })
             .catch((err) => {
                 console.log("에러발생", err);
-                // history.push('/');
-                // if(err.response.status === 404){
-                //     history.push('/error404');
-                // }else{
-                //     history.push('/error500');
-                // }
             });
     };
 };
@@ -113,9 +105,6 @@ export default handleActions({
     }),
     [EDIT_CALENDAR]: (state, action) => produce(state, (draft) => {
         draft.editList = action.payload.post;
-        // draft.detailList = action.payload.detail; console.log("detail list :::",
-        // draft.detailList); console.log("[calendar] edit post :::",
-        // action.payload.post)
     }),
     [ISGET_CALENDAR]: (state, action) => produce(state, (draft) => {
         draft.is_get = Number(Number(draft.is_get) + 1);

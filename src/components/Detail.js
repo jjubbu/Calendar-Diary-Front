@@ -1,21 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components";
 
-import { Input, Grid, Text, Button } from "../elements";
-
-import { actionCreators as detailActions } from "../redux/modules/detail";
-import { actionCreators as editActions } from "../redux/modules/calendar";
-import { addShow, detailShow } from "../redux/modules/show";
-
-
+import {actionCreators as detailActions} from "../redux/modules/detail";
+import {addShow, detailShow} from "../redux/modules/show";
 
 const Detail = (props) => {
 
     // const { date } = props;
-
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const post_list = useSelector((state) => state.detail.list);
@@ -25,7 +17,6 @@ const Detail = (props) => {
     console.log("날짜보기프롭스", props);
     console.log("클릭날짜", date);
     console.log("디테일에포스트리스트", post_list);
-
 
     React.useEffect(() => {
         dispatch(detailActions.setContentMW(date));
@@ -45,48 +36,60 @@ const Detail = (props) => {
     };
 
     const goToTop = () => {
-        scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' })
+        scrollRef
+            .current
+            .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
     }
-
-    // style="fill:rgb;"
 
     return (
         <React.Fragment>
             <ModalBG>
                 <DiaryHead>
                     <GoToTop onClick={goToTop}>
-                        {<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="#655f5b" d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" /></svg>}
+                        {
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="18"
+                                    height="18"
+                                    viewBox="0 0 24 24"><path
+                                    fill="#655f5b"
+                                    d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/></svg>
+                        }
                     </GoToTop>
                     <DiaryDate >{date}</DiaryDate>
                     <CloseBtn onClick={exitDetail}>+</CloseBtn>
                 </DiaryHead>
                 <Wrap>
-                    <p ref={scrollRef} />
-                    {post_list.map((p, idx) => {
-                        return (
-                            <DiaryCard>
-                                <ColorNTitle>
-                                    <ColorCircle color={p.color} />
-                                    <Title>{p.title}</Title>
-                                </ColorNTitle>
-                                <Contents>{p.content}</Contents>
-                                <EditDelBtnDiv>
-                                    <EditBtn onClick={() => {
-                                        dispatch(detailActions.editContent(p));
-                                        goToAdd();
-                                        console.log("수정온클릭 피피피", p);
-                                        console.log("수정온클릭 피 아이디", p._id);
-                                    }}>수정</EditBtn>
+                    <p ref={scrollRef}/> {
+                        post_list.map((p, idx) => {
+                            return (
+                                <DiaryCard>
+                                    <ColorNTitle>
+                                        <ColorCircle color={p.color}/>
+                                        <Title>{p.title}</Title>
+                                    </ColorNTitle>
+                                    <Contents>{p.content}</Contents>
+                                    <EditDelBtnDiv>
+                                        <EditBtn
+                                            onClick={() => {
+                                                dispatch(detailActions.editContent(p));
+                                                goToAdd();
+                                                console.log("수정온클릭 피피피", p);
+                                                console.log("수정온클릭 피 아이디", p._id);
+                                            }}>수정</EditBtn>
 
-                                    <EditBtn key={p._id} onClick={() => {
-                                        const id = p._id;
-                                        _delContent(id)
-                                        console.log("맵포스트아이디", p._id)
-                                    }}>삭제</EditBtn>
-                                </EditDelBtnDiv>
-                            </DiaryCard>
-                        )
-                    })}
+                                        <EditBtn
+                                            key={p._id}
+                                            onClick={() => {
+                                                const id = p._id;
+                                                _delContent(id)
+                                                console.log("맵포스트아이디", p._id)
+                                            }}>삭제</EditBtn>
+                                    </EditDelBtnDiv>
+                                </DiaryCard>
+                            )
+                        })
+                    }
                     <TopBtnDiv>
                         <ToTopBtn onClick={goToTop}>top</ToTopBtn>
                     </TopBtnDiv>
@@ -97,7 +100,7 @@ const Detail = (props) => {
     )
 };
 
-const ModalBG = styled.div` 
+const ModalBG = styled.div ` 
 position: fixed; 
 top: 50%; 
 left: 50%; 
@@ -117,7 +120,7 @@ box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 2px 5px rgba(0, 0, 0, 0.24);
 
 `;
 
-const DiaryHead = styled.div`
+const DiaryHead = styled.div `
 width: 100%;
 display: flex;
 flex-direction: row;
@@ -126,7 +129,7 @@ align-items: center;
 margin: 5px 0px;
 `;
 
-const GoToTop = styled.button`
+const GoToTop = styled.button `
 width: 40px;
 height: 40px;
 margin: 0px 0px 0px 3px;
@@ -146,7 +149,7 @@ outline: none;
   }
 `;
 
-const DiaryDate = styled.p`
+const DiaryDate = styled.p `
 margin: auto;
 font-family: 'Song Myung', serif;
 color: #655f5b;
@@ -155,7 +158,7 @@ font-size: 20px;
 white-space: pre-wrap;
 `;
 
-const CloseBtn = styled.button`
+const CloseBtn = styled.button `
 width: 40px;
 height: 40px;
 margin: 0px 0px 0px 3px;
@@ -176,8 +179,7 @@ outline: none;
   }
 `;
 
-
-const Wrap = styled.div`
+const Wrap = styled.div `
 height: 100%;
 width: 100%;
 padding: 14px;
@@ -200,9 +202,7 @@ overflow-y: auto;
 } 
 `;
 
-
-
-const DiaryCard = styled.div`
+const DiaryCard = styled.div `
 border: 1px solid #e0c9b6;
 margin: 10px auto;
 padding: 15px;
@@ -213,7 +213,7 @@ box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.1);
 
 `;
 
-const ColorNTitle = styled.div`
+const ColorNTitle = styled.div `
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
@@ -221,7 +221,7 @@ align-items: center;
 margin: 5px 0px;
 `;
 
-const ColorCircle = styled.div`
+const ColorCircle = styled.div `
 border: none;
 width: 20px;
 height: 20px;
@@ -230,14 +230,14 @@ border-radius: 100px;
 background-color: ${props => props.color};
 `;
 
-const Title = styled.p`
+const Title = styled.p `
 font-family: 'Nanum Myeongjo', serif;
 // letter-spacing: 1px;
 font-weight: 600;
 font-size: 15px;
 `;
 
-const Contents = styled.p`
+const Contents = styled.p `
 font-family: 'Nanum Myeongjo', serif;
 font-weight: 300;
 font-size: 13px;
@@ -246,7 +246,7 @@ line-height: 18px;
 white-space: pre-wrap;
 `;
 
-const EditDelBtnDiv = styled.div`
+const EditDelBtnDiv = styled.div `
 display: flex;
 flex-direction: row;
 justify-content: flex-end;
@@ -254,7 +254,7 @@ align-items: center;
 margin: 5px 3px;
 `;
 
-const EditBtn = styled.button`
+const EditBtn = styled.button `
 width: 50px;
 height: 20px;
 margin: 0px 0px 0px 3px;
@@ -277,7 +277,7 @@ outline: none;
   }
 `;
 
-const AddBtn = styled.button`
+const AddBtn = styled.button `
 width: 40px;
 height: 40px;
 background-color: #efc19b;
@@ -305,14 +305,14 @@ outline: none;
   }
 `;
 
-const TopBtnDiv = styled.div`
+const TopBtnDiv = styled.div `
 width: 300px;
 margin: auto;
 display: flex; 
 flex-direction: column; 
 `;
 
-const ToTopBtn = styled.button`
+const ToTopBtn = styled.button `
 display: block;
 margin: auto;
 width: 100px;
@@ -336,6 +336,5 @@ outline: none;
     color: #fff;
   }
 `;
-
 
 export default Detail;
