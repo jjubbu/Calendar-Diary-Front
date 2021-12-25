@@ -54,8 +54,6 @@
     - 불변성 유지
 - lodash
     - input 이벤트 콜백 감소
-- redux-toolkit
-    - 리덕스 모듈 코드 최소화
 - redux-chunk
     - 비동기 작업을 위한 미들웨어
 - styled-components
